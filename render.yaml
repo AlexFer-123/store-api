@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: products-backend-api
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build && npm run init-db
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/health
+    disk:
+      name: products-db
+      mountPath: /opt/render/project/src
+      sizeGB: 1

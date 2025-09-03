@@ -30,7 +30,7 @@ API RESTful para gerenciamento de produtos e clientes desenvolvida com Node.js, 
 - Node.js (versão 16 ou superior)
 - npm ou yarn
 
-### Instalação
+### Instalação Local
 
 ```bash
 # Clone o repositório
@@ -61,6 +61,35 @@ npm run lint
 
 # Corrigir problemas de linting
 npm run lint:fix
+```
+
+### Deploy em Produção
+
+#### Render.com (Recomendado)
+
+A API está configurada para deploy automático no Render:
+
+```bash
+# 1. Faça commit do código
+git add .
+git commit -m "Deploy para produção"
+git push origin main
+
+# 2. No Render Dashboard:
+# - Conecte seu repositório
+# - O arquivo render.yaml configurará tudo automaticamente
+```
+
+📖 **Guia completo**: [docs/DEPLOY.md](docs/DEPLOY.md)
+
+#### Docker (Opcional)
+
+```bash
+# Build da imagem
+docker build -t products-backend-api .
+
+# Executar container
+docker run -p 3000:3000 products-backend-api
 ```
 
 ## 🏗️ Estrutura do Projeto
@@ -229,3 +258,4 @@ A API implementa tratamento robusto de erros:
 - `npm run init-db` - Inicializar banco de dados
 - `npm run lint` - Executar linting
 - `npm run lint:fix` - Corrigir problemas de linting
+- `npm run render-build` - Build para deploy no Render
