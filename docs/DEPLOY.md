@@ -164,21 +164,43 @@ Configure auto-deploy para fazer deploy automático a cada push:
 
 ### Problemas Comuns
 
-1. **Build falha**
+1. **ESLint falha no CI/CD**
+   ```bash
+   # Solução: Reinstalar dependências
+   npm run clean
+   
+   # Ou manualmente:
+   rm -rf node_modules package-lock.json
+   npm install
+   ```
+
+2. **Build falha**
    - Verifique se todas as dependências estão no `package.json`
    - Confirme que o TypeScript compila localmente
+   - Execute `npm run lint` para verificar problemas de código
 
-2. **Banco não inicializa**
+3. **Banco não inicializa**
    - Verifique se o comando `npm run init-db` está no build
    - Confirme as permissões de escrita no diretório
 
-3. **Aplicação não inicia**
+4. **Aplicação não inicia**
    - Verifique os logs no dashboard
    - Confirme se a porta está configurada corretamente
 
-4. **Health check falha**
+5. **Health check falha**
    - Verifique se `/api/health` responde localmente
    - Confirme se o servidor está ouvindo na porta correta
+
+6. **Erro "@typescript-eslint/recommended config not found"**
+   ```bash
+   # Instalar dependências corretas
+   npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser
+   
+   # Verificar configuração no .eslintrc.json
+   {
+     "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"]
+   }
+   ```
 
 ### Logs Úteis
 

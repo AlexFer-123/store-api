@@ -259,3 +259,4 @@ A API implementa tratamento robusto de erros:
 - `npm run lint` - Executar linting
 - `npm run lint:fix` - Corrigir problemas de linting
 - `npm run render-build` - Build para deploy no Render
+- `npm run clean` - Limpar cache e reinstalar dependências
