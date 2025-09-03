@@ -1,16 +1,17 @@
 import { runQuery, getQuery, allQuery } from '../database/connection';
 import { Product } from '../types';
+import { v4 as uuidv4 } from 'uuid';
 
 export class ProductModel {
-  static async create(product: Omit<Product, 'id' | 'data_criacao'>): Promise<number> {
-    const sql = 'INSERT INTO produtos (nome, preco, estoque) VALUES (?, ?, ?)';
-    await runQuery(sql, [product.nome, product.preco, product.estoque]);
+  static async create(product: Omit<Product, 'id' | 'data_criacao'>): Promise<string> {
+    const id = uuidv4();
+    const sql = 'INSERT INTO produtos (id, nome, preco, estoque) VALUES (?, ?, ?, ?)';
+    await runQuery(sql, [id, product.nome, product.preco, product.estoque]);
     
-    const lastInsert = await getQuery<{ id: number }>('SELECT last_insert_rowid() as id');
-    return lastInsert?.id || 0;
+    return id;
   }
 
-  static async findById(id: number): Promise<Product | undefined> {
+  static async findById(id: string): Promise<Product | undefined> {
     const sql = 'SELECT * FROM produtos WHERE id = ?';
     return await getQuery<Product>(sql, [id]);
   }
@@ -44,7 +45,7 @@ export class ProductModel {
     return result?.total || 0;
   }
 
-  static async update(id: number, product: Partial<Omit<Product, 'id' | 'data_criacao'>>): Promise<void> {
+  static async update(id: string, product: Partial<Omit<Product, 'id' | 'data_criacao'>>): Promise<void> {
     const fields = Object.keys(product).map(key => `${key} = ?`).join(', ');
     const values = Object.values(product);
     
@@ -52,7 +53,7 @@ export class ProductModel {
     await runQuery(sql, [...values, id]);
   }
 
-  static async delete(id: number): Promise<void> {
+  static async delete(id: string): Promise<void> {
     const sql = 'DELETE FROM produtos WHERE id = ?';
     await runQuery(sql, [id]);
   }

@@ -44,8 +44,8 @@ export const validateClient = [
 
 export const validateId = [
   param('id')
-    .isInt({ min: 1 })
-    .withMessage('ID deve ser um número inteiro positivo'),
+    .isUUID(4)
+    .withMessage('ID deve ser um UUID válido'),
   handleValidationErrors
 ];
 

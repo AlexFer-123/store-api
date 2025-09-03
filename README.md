@@ -53,8 +53,11 @@ npm start
 ### Desenvolvimento
 
 ```bash
-# Modo desenvolvimento com hot-reload
+# Modo desenvolvimento com ts-node-dev (recomendado)
 npm run dev
+
+# Modo desenvolvimento com nodemon (alternativo)
+npm run dev:nodemon
 
 # Executar linting
 npm run lint
@@ -212,7 +215,7 @@ Todas as respostas seguem o padrão:
 #### Tabela `produtos`
 ```sql
 CREATE TABLE produtos (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  id TEXT PRIMARY KEY,  -- UUID v4
   nome TEXT NOT NULL,
   preco REAL NOT NULL,
   estoque INTEGER NOT NULL,
@@ -223,7 +226,7 @@ CREATE TABLE produtos (
 #### Tabela `clientes`
 ```sql
 CREATE TABLE clientes (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  id TEXT PRIMARY KEY,  -- UUID v4
   nome TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
   data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -233,11 +236,13 @@ CREATE TABLE clientes (
 ## 🔒 Validações
 
 ### Produtos
+- `id`: UUID v4 (gerado automaticamente)
 - `nome`: obrigatório, 1-255 caracteres
 - `preco`: obrigatório, número positivo
 - `estoque`: obrigatório, número inteiro não negativo
 
 ### Clientes
+- `id`: UUID v4 (gerado automaticamente)
 - `nome`: obrigatório, 1-255 caracteres
 - `email`: obrigatório, formato válido, único no sistema
 
@@ -260,3 +265,4 @@ A API implementa tratamento robusto de erros:
 - `npm run lint:fix` - Corrigir problemas de linting
 - `npm run render-build` - Build para deploy no Render
 - `npm run clean` - Limpar cache e reinstalar dependências
+- `npm run dev:nodemon` - Desenvolvimento com nodemon

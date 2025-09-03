@@ -1,5 +1,5 @@
 export interface Product {
-  id?: number;
+  id?: string;
   nome: string;
   preco: number;
   estoque: number;
@@ -7,7 +7,7 @@ export interface Product {
 }
 
 export interface Client {
-  id?: number;
+  id?: string;
   nome: string;
   email: string;
   data_criacao?: string;

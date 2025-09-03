@@ -75,7 +75,15 @@ export class ClientController {
 
   static async findById(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = Number(req.params.id);
+      const { id } = req.params;
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          error: 'ID é obrigatório'
+        });
+        return;
+      }
+      
       const client = await ClientModel.findById(id);
       
       if (!client) {
@@ -99,7 +107,15 @@ export class ClientController {
 
   static async update(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = Number(req.params.id);
+      const { id } = req.params;
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          error: 'ID é obrigatório'
+        });
+        return;
+      }
+      
       const clientData: Partial<Omit<Client, 'id' | 'data_criacao'>> = req.body;
       
       const existingClient = await ClientModel.findById(id);
@@ -147,7 +163,14 @@ export class ClientController {
 
   static async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = Number(req.params.id);
+      const { id } = req.params;
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          error: 'ID é obrigatório'
+        });
+        return;
+      }
       
       const existingClient = await ClientModel.findById(id);
       if (!existingClient) {

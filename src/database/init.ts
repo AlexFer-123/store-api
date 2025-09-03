@@ -3,7 +3,7 @@ import { runQuery } from './connection';
 const createTables = async (): Promise<void> => {
   const createProductsTable = `
     CREATE TABLE IF NOT EXISTS produtos (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id TEXT PRIMARY KEY,
       nome TEXT NOT NULL,
       preco REAL NOT NULL,
       estoque INTEGER NOT NULL,
@@ -13,7 +13,7 @@ const createTables = async (): Promise<void> => {
 
   const createClientsTable = `
     CREATE TABLE IF NOT EXISTS clientes (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id TEXT PRIMARY KEY,
       nome TEXT NOT NULL,
       email TEXT NOT NULL UNIQUE,
       data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP

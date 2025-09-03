@@ -66,7 +66,15 @@ export class ProductController {
 
   static async findById(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = Number(req.params.id);
+      const { id } = req.params;
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          error: 'ID é obrigatório'
+        });
+        return;
+      }
+      
       const product = await ProductModel.findById(id);
       
       if (!product) {
@@ -90,7 +98,15 @@ export class ProductController {
 
   static async update(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = Number(req.params.id);
+      const { id } = req.params;
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          error: 'ID é obrigatório'
+        });
+        return;
+      }
+      
       const productData: Partial<Omit<Product, 'id' | 'data_criacao'>> = req.body;
       
       const existingProduct = await ProductModel.findById(id);
@@ -127,7 +143,14 @@ export class ProductController {
 
   static async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = Number(req.params.id);
+      const { id } = req.params;
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          error: 'ID é obrigatório'
+        });
+        return;
+      }
       
       const existingProduct = await ProductModel.findById(id);
       if (!existingProduct) {

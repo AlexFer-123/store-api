@@ -63,7 +63,7 @@ Cria um novo produto.
 {
   "success": true,
   "data": {
-    "id": 1,
+    "id": "550e8400-e29b-41d4-a716-446655440000",
     "nome": "Smartphone",
     "preco": 899.99,
     "estoque": 50,
@@ -109,7 +109,7 @@ Lista produtos com paginação e busca.
 Busca produto por ID.
 
 **Parâmetros:**
-- `id`: ID do produto (inteiro positivo)
+- `id`: ID do produto (UUID v4)
 
 **Resposta (200):**
 ```json
