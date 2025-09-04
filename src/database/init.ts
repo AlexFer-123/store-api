@@ -7,7 +7,7 @@ const createTables = async (): Promise<void> => {
       nome TEXT NOT NULL,
       preco REAL NOT NULL,
       estoque INTEGER NOT NULL,
-      data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
+      created DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `;
 
@@ -16,7 +16,7 @@ const createTables = async (): Promise<void> => {
       id TEXT PRIMARY KEY,
       nome TEXT NOT NULL,
       email TEXT NOT NULL UNIQUE,
-      data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
+      created DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `;
 

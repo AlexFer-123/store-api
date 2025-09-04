@@ -67,7 +67,7 @@ Cria um novo produto.
     "nome": "Smartphone",
     "preco": 899.99,
     "estoque": 50,
-    "data_criacao": "2024-01-01T12:00:00.000Z"
+    "created": "2024-01-01T12:00:00.000Z"
   },
   "message": "Produto criado com sucesso"
 }
@@ -92,7 +92,7 @@ Lista produtos com paginação e busca.
         "nome": "Smartphone",
         "preco": 899.99,
         "estoque": 50,
-        "data_criacao": "2024-01-01T12:00:00.000Z"
+        "created": "2024-01-01T12:00:00.000Z"
       }
     ],
     "pagination": {
@@ -120,7 +120,7 @@ Busca produto por ID.
     "nome": "Smartphone",
     "preco": 899.99,
     "estoque": 50,
-    "data_criacao": "2024-01-01T12:00:00.000Z"
+    "created": "2024-01-01T12:00:00.000Z"
   }
 }
 ```
@@ -157,7 +157,7 @@ Atualiza um produto.
     "nome": "Smartphone Atualizado",
     "preco": 799.99,
     "estoque": 45,
-    "data_criacao": "2024-01-01T12:00:00.000Z"
+    "created": "2024-01-01T12:00:00.000Z"
   },
   "message": "Produto atualizado com sucesso"
 }
@@ -204,7 +204,7 @@ Cria um novo cliente.
     "id": 1,
     "nome": "João Silva",
     "email": "joao@email.com",
-    "data_criacao": "2024-01-01T12:00:00.000Z"
+    "created": "2024-01-01T12:00:00.000Z"
   },
   "message": "Cliente criado com sucesso"
 }
@@ -236,7 +236,7 @@ Lista clientes com paginação e busca.
         "id": 1,
         "nome": "João Silva",
         "email": "joao@email.com",
-        "data_criacao": "2024-01-01T12:00:00.000Z"
+        "created": "2024-01-01T12:00:00.000Z"
       }
     ],
     "pagination": {
@@ -263,7 +263,7 @@ Busca cliente por ID.
     "id": 1,
     "nome": "João Silva",
     "email": "joao@email.com",
-    "data_criacao": "2024-01-01T12:00:00.000Z"
+    "created": "2024-01-01T12:00:00.000Z"
   }
 }
 ```
@@ -298,7 +298,7 @@ Atualiza um cliente.
     "id": 1,
     "nome": "João Santos",
     "email": "joao.santos@email.com",
-    "data_criacao": "2024-01-01T12:00:00.000Z"
+    "created": "2024-01-01T12:00:00.000Z"
   },
   "message": "Cliente atualizado com sucesso"
 }

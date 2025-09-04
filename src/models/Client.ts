@@ -3,7 +3,7 @@ import { Client } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
 export class ClientModel {
-  static async create(client: Omit<Client, 'id' | 'data_criacao'>): Promise<string> {
+  static async create(client: Omit<Client, 'id' | 'created'>): Promise<string> {
     const id = uuidv4();
     const sql = 'INSERT INTO clientes (id, nome, email) VALUES (?, ?, ?)';
     await runQuery(sql, [id, client.nome, client.email]);
@@ -31,7 +31,7 @@ export class ClientModel {
       params.push(`%${search}%`, `%${search}%`);
     }
 
-    sql += ' ORDER BY data_criacao DESC LIMIT ? OFFSET ?';
+    sql += ' ORDER BY created DESC LIMIT ? OFFSET ?';
     params.push(limit, offset);
 
     return await allQuery<Client>(sql, params);
@@ -50,7 +50,7 @@ export class ClientModel {
     return result?.total || 0;
   }
 
-  static async update(id: string, client: Partial<Omit<Client, 'id' | 'data_criacao'>>): Promise<void> {
+  static async update(id: string, client: Partial<Omit<Client, 'id' | 'created'>>): Promise<void> {
     const fields = Object.keys(client).map(key => `${key} = ?`).join(', ');
     const values = Object.values(client);
     

@@ -3,14 +3,14 @@ export interface Product {
   nome: string;
   preco: number;
   estoque: number;
-  data_criacao?: string;
+  created?: string;
 }
 
 export interface Client {
   id?: string;
   nome: string;
   email: string;
-  data_criacao?: string;
+  created?: string;
 }
 
 export interface ApiResponse<T = unknown> {

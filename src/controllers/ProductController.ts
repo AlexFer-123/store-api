@@ -5,7 +5,7 @@ import { Product, ApiResponse, PaginationQuery } from '../types';
 export class ProductController {
   static async create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const productData: Omit<Product, 'id' | 'data_criacao'> = req.body;
+      const productData: Omit<Product, 'id' | 'created'> = req.body;
       const id = await ProductModel.create(productData);
       
       const product = await ProductModel.findById(id);
@@ -107,7 +107,7 @@ export class ProductController {
         return;
       }
       
-      const productData: Partial<Omit<Product, 'id' | 'data_criacao'>> = req.body;
+      const productData: Partial<Omit<Product, 'id' | 'created'>> = req.body;
       
       const existingProduct = await ProductModel.findById(id);
       if (!existingProduct) {

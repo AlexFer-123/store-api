@@ -3,7 +3,7 @@ import { Product } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
 export class ProductModel {
-  static async create(product: Omit<Product, 'id' | 'data_criacao'>): Promise<string> {
+  static async create(product: Omit<Product, 'id' | 'created'>): Promise<string> {
     const id = uuidv4();
     const sql = 'INSERT INTO produtos (id, nome, preco, estoque) VALUES (?, ?, ?, ?)';
     await runQuery(sql, [id, product.nome, product.preco, product.estoque]);
@@ -26,7 +26,7 @@ export class ProductModel {
       params.push(`%${search}%`);
     }
 
-    sql += ' ORDER BY data_criacao DESC LIMIT ? OFFSET ?';
+    sql += ' ORDER BY created DESC LIMIT ? OFFSET ?';
     params.push(limit, offset);
 
     return await allQuery<Product>(sql, params);
@@ -45,7 +45,7 @@ export class ProductModel {
     return result?.total || 0;
   }
 
-  static async update(id: string, product: Partial<Omit<Product, 'id' | 'data_criacao'>>): Promise<void> {
+  static async update(id: string, product: Partial<Omit<Product, 'id' | 'created'>>): Promise<void> {
     const fields = Object.keys(product).map(key => `${key} = ?`).join(', ');
     const values = Object.values(product);
     

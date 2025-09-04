@@ -5,7 +5,7 @@ import { Client, ApiResponse, PaginationQuery } from '../types';
 export class ClientController {
   static async create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const clientData: Omit<Client, 'id' | 'data_criacao'> = req.body;
+      const clientData: Omit<Client, 'id' | 'created'> = req.body;
       
       const existingClient = await ClientModel.findByEmail(clientData.email);
       if (existingClient) {
@@ -116,7 +116,7 @@ export class ClientController {
         return;
       }
       
-      const clientData: Partial<Omit<Client, 'id' | 'data_criacao'>> = req.body;
+      const clientData: Partial<Omit<Client, 'id' | 'created'>> = req.body;
       
       const existingClient = await ClientModel.findById(id);
       if (!existingClient) {
