@@ -30,6 +30,11 @@ API RESTful para gerenciamento de produtos e clientes desenvolvida com Node.js, 
 - Node.js (versão 16 ou superior)
 - npm ou yarn
 
+### Teste com uma interface em production
+
+Para melhor atender as necessidades de teste eu deixarei disponível uma aplicação já feita deploy para quem tiver interesse testar em produção:
+(https://storeappfortest.netlify.app/produtos)[StoreApp]
+
 ### Instalação Local
 
 ```bash
